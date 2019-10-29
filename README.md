@@ -5,3 +5,4 @@ NOTE: in progress, just a seed, too many TODOs to mention
 
 - ```./gradlew  run```
 - ```curl -X POST -H "Content-Type: application/json" -d @SampleCreatePerson.json localhost:8080/api/v1/addperson```
+- ```curl localhost:8080/api/v1/removeall```

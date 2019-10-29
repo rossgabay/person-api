@@ -22,6 +22,7 @@ class InMemoryImpl : Repository {
 
     override suspend fun removeAll(): Boolean {
          personList.clear()
+         currentId.set(0)
          return true
     }
 }

@@ -1,6 +1,7 @@
 package com.rgabay
 
 import com.rgabay.api.addperson
+import com.rgabay.api.removeall
 import com.rgabay.repository.InMemoryImpl
 import io.ktor.application.*
 import io.ktor.response.*
@@ -28,6 +29,7 @@ fun Application.module(testing: Boolean = false) {
         about()
 
         addperson(db)
+        removeall(db)
     }
 }
 

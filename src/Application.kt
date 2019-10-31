@@ -1,17 +1,17 @@
 package com.rgabay
 
 import com.rgabay.api.addperson
+import com.rgabay.api.listall
 import com.rgabay.api.removeall
 import com.rgabay.repository.InMemoryImpl
 import io.ktor.application.*
-import io.ktor.response.*
-import io.ktor.request.*
-import io.ktor.routing.get
 import io.ktor.routing.routing
 import com.rgabay.routes.*
 import com.ryanharter.ktor.moshi.moshi
+import freemarker.cache.ClassTemplateLoader
 import io.ktor.features.ContentNegotiation
-import io.netty.handler.codec.DefaultHeaders
+import io.ktor.freemarker.FreeMarker
+
 
 fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
@@ -24,12 +24,16 @@ fun Application.module(testing: Boolean = false) {
     install(ContentNegotiation){
        moshi()
     }
+    install(FreeMarker){
+        templateLoader = ClassTemplateLoader(this::class.java.classLoader, "templates")
+    }
     routing{
         home()
         about()
 
         addperson(db)
         removeall(db)
+        listall(db)
     }
 }
 

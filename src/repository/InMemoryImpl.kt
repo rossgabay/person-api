@@ -16,8 +16,8 @@ class InMemoryImpl : Repository {
         return person
     }
 
-    override suspend fun listAll(): List<Person> {
-       return personList.toList()
+    override suspend fun listAll(): ArrayList<Person> {
+       return personList
     }
 
     override suspend fun removeAll(): Boolean {
